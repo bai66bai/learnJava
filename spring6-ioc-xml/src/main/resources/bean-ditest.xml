@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    第一种方式引入外部bean
+    1.创建两个类的对象
+    2.在emp的bean标签里面，使用property引入dept的bean
+    -->
+
+<!--    <bean id="emp" class="com.yang.di.ditest.Emp">-->
+<!--        &lt;!&ndash;普通属性注入&ndash;&gt;-->
+<!--        <property name="ename" value="张三"></property>-->
+<!--        <property name="age" value="50"></property>-->
+<!--        &lt;!&ndash;外部bean&ndash;&gt;-->
+<!--        <property name="dept" ref="dept"></property>-->
+<!--    </bean>-->
+
+<!--    <bean id="dept" class="com.yang.di.ditest.Dept">-->
+<!--        <property name="dname" value="安保部"></property>-->
+<!--    </bean>-->
+
+    <!--第二种方式 内部bean注入-->
+<!--    <bean id="emp1" class="com.yang.di.ditest.Emp">-->
+<!--        &lt;!&ndash;普通属性注入&ndash;&gt;-->
+<!--        <property name="ename" value="张思"></property>-->
+<!--        <property name="age" value="25"></property>-->
+<!--        &lt;!&ndash;内部bean&ndash;&gt;-->
+<!--        <property name="dept">-->
+<!--            <bean id="dept1" class="com.yang.di.ditest.Dept">-->
+<!--                <property name="dname" value="财务部"></property>-->
+<!--            </bean>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+    <!--第三种方式 级联赋值-->
+
+        <bean id="emp2" class="com.yang.di.ditest.Emp">
+                    <property name="ename" value="李强"></property>
+                    <property name="age" value="40"></property>
+            <property name="dept" ref="dept2"></property>
+            <property name="dept.dname" value="测试部"></property>
+        </bean>
+
+        <bean id="dept2" class="com.yang.di.ditest.Dept">
+            <property name="dname" value="研发部"></property>
+        </bean>
+</beans>
